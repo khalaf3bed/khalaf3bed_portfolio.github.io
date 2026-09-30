@@ -1,4 +1,4 @@
-/* אופטימיזציה למובייל, מניעת גלילה אופקית ושיפור מגע בסמארטפונים */
+/* منع المشاكل التمريرية في هواتف iPhone و Samsung */
 html, body {
   overflow-x: hidden;
   width: 100%;
@@ -10,7 +10,7 @@ body {
   letter-spacing: -0.01em;
 }
 
-/* מסגרות עדינות ונקיות */
+/* حدود خفيفة مريحة للعين */
 .subtle-border {
   border-color: rgba(228, 228, 231, 0.8);
 }
@@ -18,7 +18,7 @@ body {
   border-color: rgba(39, 39, 42, 0.8);
 }
 
-/* תאורת רקע עדינה לעכבר במחשבים */
+/* توهج الماوس للكمبيوتر فقط مع عزل تام للمس */
 #ambient-glow {
   pointer-events: none;
   position: fixed;
@@ -34,7 +34,7 @@ body {
   background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
 }
 
-/* הסתרת פסי גלילה בכפתורי הסינון בנייד */
+/* إخفاء شريط التمرير الأفقي للأزرار في الهواتف */
 .scrollbar-none::-webkit-scrollbar {
   display: none;
 }
