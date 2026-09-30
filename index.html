@@ -2,7 +2,7 @@
 <html lang="he" dir="rtl" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
   <title>Abed Khalaf | עבד ח'לף</title>
 
   <!-- Google Fonts -->
@@ -29,75 +29,54 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <style>
-    body {
-      letter-spacing: -0.01em;
-    }
-    .subtle-border {
-      border-color: rgba(228, 228, 231, 0.8);
-    }
-    .dark .subtle-border {
-      border-color: rgba(39, 39, 42, 0.8);
-    }
-    #ambient-glow {
-      pointer-events: none;
-      position: fixed;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
-      transform: translate(-50%, -50%);
-      transition: opacity 0.4s ease;
-      z-index: 0;
-    }
-    .dark #ambient-glow {
-      background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
-    }
-  </style>
+  <!-- Custom CSS File -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body class="bg-[#fafaf9] text-zinc-800 dark:bg-[#09090b] dark:text-zinc-200 transition-colors duration-300 antialiased min-h-screen relative selection:bg-zinc-200 dark:selection:bg-zinc-800">
 
-  <!-- توهج الماوس -->
-  <div id="ambient-glow" class="hidden sm:block"></div>
+  <!-- توهج الماوس (يظهر فقط على أجهزة الكمبيوتر لمنع تعليق التمرير في الهواتف) -->
+  <div id="ambient-glow" class="hidden md:block"></div>
 
-  <!-- شريط تقدم القراءة -->
+  <!-- شريط تقدم القراءة في أعلى الصفحة -->
   <div id="scroll-progress" class="fixed top-0 left-0 right-0 h-[2px] bg-zinc-900 dark:bg-zinc-100 z-50 origin-right transition-transform duration-75"></div>
 
-  <!-- إشعار نسخ البريد -->
+  <!-- نافذة تنبيه لنسخ البريد -->
   <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-zinc-900 text-zinc-100 dark:bg-zinc-100 dark:text-zinc-900 px-4 py-2 rounded-full text-xs font-medium shadow-lg opacity-0 translate-y-3 pointer-events-none transition-all duration-300 flex items-center gap-2">
     <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500"></i>
     <span data-i18n="toastCopied">האימייל הועתק בהצלחה!</span>
   </div>
 
-  <!-- شريط التنقل العلوي -->
-  <header class="sticky top-5 z-40 max-w-3xl mx-auto px-4">
-    <div class="backdrop-blur-md bg-white/80 dark:bg-zinc-900/80 border subtle-border shadow-sm rounded-full px-4 sm:px-5 py-2.5 flex items-center justify-between transition-all">
-      <a href="#" class="flex items-center gap-2.5 group">
+  <!-- شريط التنقل العلوي المحسن بالكامل للهواتف الذكية -->
+  <header class="sticky top-3 sm:top-5 z-40 max-w-3xl mx-auto px-3 sm:px-4">
+    <div class="backdrop-blur-md bg-white/90 dark:bg-zinc-900/90 border subtle-border shadow-sm rounded-2xl sm:rounded-full px-3 sm:px-5 py-2.5 flex items-center justify-between transition-all">
+      <a href="#" class="flex items-center gap-2 group shrink-0">
         <img 
           src="https://lh3.googleusercontent.com/a/ACg8ocJ87vRfYq0jPWq5cR3qITROPWmbfnJlXi4djkgGZXmS87CuPYbw=s576-c-no" 
           alt="Abed Khalaf" 
-          class="w-7 h-7 rounded-full object-cover ring-1 ring-zinc-300 dark:ring-zinc-700 group-hover:scale-105 transition-transform"
+          class="w-7 h-7 rounded-full object-cover ring-1 ring-zinc-300 dark:ring-zinc-700"
         />
-        <span class="text-xs sm:text-sm font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 font-en">Abed Khalaf</span>
+        <span class="text-xs sm:text-sm font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 font-en">Abed</span>
       </a>
 
-      <nav class="flex items-center gap-2.5 sm:gap-4 text-xs font-medium">
-        <a href="#work" data-i18n="navWork" class="text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors">עבודות</a>
-        <a href="#experience" data-i18n="navExp" class="text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors">ניסיון</a>
-        <a href="#skills" data-i18n="navSkills" class="text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors">כישורים</a>
+      <!-- روابط سريعة للهاتف والكمبيوتر -->
+      <nav class="flex items-center gap-2 sm:gap-3 text-xs font-medium">
+        <div class="hidden sm:flex items-center gap-3">
+          <a href="#work" data-i18n="navWork" class="text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors">עבודות</a>
+          <a href="#experience" data-i18n="navExp" class="text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors">ניסיון</a>
+          <a href="#skills" data-i18n="navSkills" class="text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors">כישורים</a>
+          <div class="h-3 w-px bg-zinc-200 dark:bg-zinc-800"></div>
+        </div>
 
-        <div class="h-3 w-px bg-zinc-200 dark:bg-zinc-800"></div>
-
-        <!-- أيقونات GitHub و LinkedIn في الشريط العلوي (SVG مباشر) -->
-        <div class="flex items-center gap-1.5">
-          <a href="https://github.com/khalaf3bed" target="_blank" rel="noopener noreferrer" class="p-1 text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors" title="GitHub">
-            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+        <!-- أيقونات السوشيال (GitHub + LinkedIn) -->
+        <div class="flex items-center gap-1">
+          <a href="https://github.com/khalaf3bed" target="_blank" rel="noopener noreferrer" class="p-1.5 text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors" title="GitHub">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
               <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
             </svg>
           </a>
-          <a href="https://www.linkedin.com/in/3bdallahkhalaf/?isSelfProfile=true" target="_blank" rel="noopener noreferrer" class="p-1 text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors" title="LinkedIn">
-            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+          <a href="https://www.linkedin.com/in/3bdallahkhalaf/?isSelfProfile=true" target="_blank" rel="noopener noreferrer" class="p-1.5 text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors" title="LinkedIn">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
               <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
             </svg>
           </a>
@@ -105,15 +84,15 @@
 
         <div class="h-3 w-px bg-zinc-200 dark:bg-zinc-800"></div>
 
-        <!-- قائمة اللغات -->
+        <!-- اختيار اللغة -->
         <select id="lang-switcher" class="bg-transparent text-zinc-700 dark:text-zinc-300 text-xs font-semibold cursor-pointer outline-none border-none py-1">
-          <option value="he" class="bg-white dark:bg-zinc-900">עב (HE)</option>
-          <option value="ar" class="bg-white dark:bg-zinc-900">عر (AR)</option>
+          <option value="he" class="bg-white dark:bg-zinc-900">עב</option>
+          <option value="ar" class="bg-white dark:bg-zinc-900">عر</option>
           <option value="en" class="bg-white dark:bg-zinc-900">EN</option>
           <option value="es" class="bg-white dark:bg-zinc-900">ES</option>
         </select>
 
-        <!-- زر التبديل بين النهاري والليلي -->
+        <!-- زر المظهر الليلي/النهاري -->
         <button id="theme-toggle" class="p-1.5 rounded-full text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all">
           <i data-lucide="moon" class="w-3.5 h-3.5 hidden dark:block"></i>
           <i data-lucide="sun" class="w-3.5 h-3.5 block dark:hidden"></i>
@@ -122,81 +101,68 @@
     </div>
   </header>
 
-  <main class="max-w-3xl mx-auto px-6 pt-16 pb-24 space-y-24 relative z-10">
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 pt-8 sm:pt-14 pb-20 space-y-16 sm:space-y-24 relative z-10">
 
-    <!-- قسم الهيرو -->
-    <section class="space-y-6 pt-4">
-      <div class="flex items-start justify-between gap-6">
-        <div class="space-y-3">
+    <!-- قسم الهيرو (Hero) -->
+    <section class="space-y-5 pt-2">
+      <div class="flex flex-col-reverse sm:flex-row items-start sm:items-center justify-between gap-5 sm:gap-6">
+        <div class="space-y-2.5">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-zinc-100 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 border subtle-border">
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
             <span data-i18n="badgeAvailable">זמין לפרויקטים חדשים</span>
           </div>
-          <h1 class="text-4xl sm:text-5xl font-semibold tracking-tight text-zinc-950 dark:text-white leading-[1.2]" data-i18n="heroTitle">
+          <h1 class="text-3xl sm:text-5xl font-semibold tracking-tight text-zinc-950 dark:text-white leading-[1.2]" data-i18n="heroTitle">
             עבד ח'לף.
           </h1>
-          <p class="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 font-light max-w-xl leading-relaxed" data-i18n="heroBio">
+          <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 font-light max-w-xl leading-relaxed" data-i18n="heroBio">
             מפתח אתרים ואיש תקשורת שיווקית[cite: 1]. משלב בין קוד נקי לחשיבה אסטרטגית ליצירת חוויות דיגיטליות בעלות משמעות וערך[cite: 1].
           </p>
         </div>
 
-        <div class="shrink-0 relative group">
+        <div class="shrink-0 relative">
           <img 
             src="https://lh3.googleusercontent.com/a/ACg8ocJ87vRfYq0jPWq5cR3qITROPWmbfnJlXi4djkgGZXmS87CuPYbw=s576-c-no" 
             alt="עבד ח'לף" 
-            class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover ring-1 ring-zinc-300 dark:ring-zinc-800 shadow-sm group-hover:scale-[1.02] transition-transform duration-300"
+            class="w-20 h-20 sm:w-28 sm:h-28 rounded-2xl object-cover ring-1 ring-zinc-300 dark:ring-zinc-800 shadow-sm"
           />
         </div>
       </div>
 
-      <!-- أزرار الإجراءات وروابط السوشيال بجانب الهاتف والإيميل -->
-      <div class="flex flex-wrap items-center gap-3 pt-2">
-        <a id="contact-action-btn" href="mailto:abdallahkf10@gmail.com?subject=פנייה%20מהאתר%20האישי%20-%20עבד%20ח'לף" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-zinc-900 text-zinc-50 dark:bg-zinc-100 dark:text-zinc-900 text-xs sm:text-sm font-medium hover:opacity-90 active:scale-95 transition-all shadow-sm">
+      <!-- أزرار الإجراءات السريعة في الهاتف والكمبيوتر -->
+      <div class="flex flex-wrap items-center gap-2.5 pt-1">
+        <a id="contact-action-btn" href="mailto:abdallahkf10@gmail.com?subject=פנייה%20מהאתר%20האישי%20-%20עבד%20ח'לף" class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl bg-zinc-900 text-zinc-50 dark:bg-zinc-100 dark:text-zinc-900 text-xs sm:text-sm font-medium hover:opacity-90 active:scale-95 transition-all shadow-sm">
           <i data-lucide="send" class="w-3.5 h-3.5"></i>
           <span data-i18n="btnContact">בוא נדבר</span>
         </a>
         
-        <button id="copy-email-btn" data-email="abdallahkf10@gmail.com" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border subtle-border hover:bg-zinc-100 dark:hover:bg-zinc-900 active:scale-95 text-xs sm:text-sm font-medium text-zinc-700 dark:text-zinc-300 transition-all">
+        <button id="copy-email-btn" data-email="abdallahkf10@gmail.com" class="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2.5 rounded-xl border subtle-border hover:bg-zinc-100 dark:hover:bg-zinc-900 active:scale-95 text-xs sm:text-sm font-medium text-zinc-700 dark:text-zinc-300 transition-all">
           <i data-lucide="copy" class="w-3.5 h-3.5"></i>
           <span data-i18n="btnCopyEmail">העתק אימייל</span>
         </button>
 
-        <a href="tel:+972547203771" dir="ltr" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border subtle-border hover:bg-zinc-100 dark:hover:bg-zinc-900 active:scale-95 text-xs sm:text-sm font-medium text-zinc-700 dark:text-zinc-300 transition-all">
+        <a href="tel:+972547203771" dir="ltr" class="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2.5 rounded-xl border subtle-border hover:bg-zinc-100 dark:hover:bg-zinc-900 active:scale-95 text-xs sm:text-sm font-medium text-zinc-700 dark:text-zinc-300 transition-all">
           <i data-lucide="phone" class="w-3.5 h-3.5"></i>
           <span>+972 54-720-3771</span>
         </a>
-
-        <!-- أيقونات GitHub و LinkedIn هنا بجانب الهاتف والإيميل (SVG مباشر) -->
-        <div class="flex items-center gap-2">
-          <a href="https://github.com/khalaf3bed" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-xl border subtle-border hover:bg-zinc-100 dark:hover:bg-zinc-900 text-zinc-700 dark:text-zinc-300 transition-all active:scale-95" title="GitHub">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-            </svg>
-          </a>
-          <a href="https://www.linkedin.com/in/3bdallahkhalaf/?isSelfProfile=true" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-xl border subtle-border hover:bg-zinc-100 dark:hover:bg-zinc-900 text-zinc-700 dark:text-zinc-300 transition-all active:scale-95" title="LinkedIn">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-            </svg>
-          </a>
-        </div>
       </div>
     </section>
 
-    <!-- قسم المشاريع -->
-    <section id="work" class="space-y-6">
+    <!-- قسم المشاريع (Works) -->
+    <section id="work" class="space-y-5">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b subtle-border pb-3 gap-3">
         <h2 class="text-xs uppercase tracking-widest text-zinc-400 font-semibold" data-i18n="sectionWorkTitle">פרויקטים נבחרים</h2>
         
-        <div class="flex items-center gap-1.5 text-xs">
-          <button class="filter-btn active px-3 py-1 rounded-full bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 transition-all" data-filter="all" data-i18n="filterAll">הכל</button>
-          <button class="filter-btn px-3 py-1 rounded-full text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-200 transition-all" data-filter="code" data-i18n="filterCode">פיתוח וקוד</button>
-          <button class="filter-btn px-3 py-1 rounded-full text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-200 transition-all" data-filter="marketing" data-i18n="filterMarketing">שיווק ואסטרטגיה</button>
+        <!-- أزرار الفلترة المتوافقة مع لمس الهاتف -->
+        <div class="flex items-center gap-1.5 text-xs overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
+          <button class="filter-btn active px-3 py-1 rounded-full bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 transition-all whitespace-nowrap" data-filter="all" data-i18n="filterAll">הכל</button>
+          <button class="filter-btn px-3 py-1 rounded-full text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-200 transition-all whitespace-nowrap" data-filter="code" data-i18n="filterCode">פיתוח וקוד</button>
+          <button class="filter-btn px-3 py-1 rounded-full text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-200 transition-all whitespace-nowrap" data-filter="marketing" data-i18n="filterMarketing">שיווק ואסטרטגיה</button>
         </div>
       </div>
 
       <div class="divide-y divide-zinc-200/80 dark:divide-zinc-800/80" id="projects-list">
         
-        <article class="project-item py-6 group flex flex-col md:flex-row md:items-baseline justify-between gap-4 transition-all" data-category="marketing">
+        <article class="project-item py-5 sm:py-6 group flex flex-col md:flex-row md:items-baseline justify-between gap-3 sm:gap-4 transition-all" data-category="marketing">
           <div class="md:w-3/4 space-y-2">
             <div class="flex items-center gap-2">
               <h3 class="text-base sm:text-lg font-medium text-zinc-900 dark:text-zinc-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-center gap-1.5" data-i18n="p1Title">
@@ -204,17 +170,17 @@
               </h3>
               <span class="text-[10px] px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-500 font-en">Strategy</span>
             </div>
-            <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-light" data-i18n="p1Desc">
+            <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-light" data-i18n="p1Desc">
               בניית תוכנית תקשורת שיווקית אסטרטגית רב-ערוצית למרכז הספורט באוניברסיטת חיפה, כולל מחקר קהלים, מיתוג וחיבור בין כושר להצלחה אקדמית[cite: 1].
             </p>
-            <div class="flex items-center gap-2 pt-1 text-xs text-zinc-400 font-en">
+            <div class="flex items-center gap-2 pt-1 text-[11px] sm:text-xs text-zinc-400 font-en">
               <span>Brand Narrative</span> • <span>Multi-channel</span> • <span>Influencers</span>
             </div>
           </div>
-          <div class="text-xs text-zinc-400 font-en shrink-0">11/2024 – 04/2025[cite: 1]</div>
+          <div class="text-[11px] sm:text-xs text-zinc-400 font-en shrink-0">11/2024 – 04/2025[cite: 1]</div>
         </article>
 
-        <article class="project-item py-6 group flex flex-col md:flex-row md:items-baseline justify-between gap-4 transition-all" data-category="code">
+        <article class="project-item py-5 sm:py-6 group flex flex-col md:flex-row md:items-baseline justify-between gap-3 sm:gap-4 transition-all" data-category="code">
           <div class="md:w-3/4 space-y-2">
             <div class="flex items-center gap-2">
               <h3 class="text-base sm:text-lg font-medium text-zinc-900 dark:text-zinc-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-center gap-1.5" data-i18n="p2Title">
@@ -222,17 +188,17 @@
               </h3>
               <span class="text-[10px] px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-500 font-en">React App</span>
             </div>
-            <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-light" data-i18n="p2Desc">
+            <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-light" data-i18n="p2Desc">
               אפליקציית ווב שנבנתה מאפס בשבוע ימים, המאפשרת יצירת קורות חיים מותאמים להייטק במהירות וללא בזבוז זמן[cite: 1].
             </p>
-            <div class="flex items-center gap-2 pt-1 text-xs text-zinc-400 font-en">
+            <div class="flex items-center gap-2 pt-1 text-[11px] sm:text-xs text-zinc-400 font-en">
               <span>ReactJS</span> • <span>UI/UX</span> • <span>AppleSeeds Project</span>
             </div>
           </div>
-          <div class="text-xs text-zinc-400 font-en shrink-0">05/2022[cite: 1]</div>
+          <div class="text-[11px] sm:text-xs text-zinc-400 font-en shrink-0">05/2022[cite: 1]</div>
         </article>
 
-        <article class="project-item py-6 group flex flex-col md:flex-row md:items-baseline justify-between gap-4 transition-all" data-category="code">
+        <article class="project-item py-5 sm:py-6 group flex flex-col md:flex-row md:items-baseline justify-between gap-3 sm:gap-4 transition-all" data-category="code">
           <div class="md:w-3/4 space-y-2">
             <div class="flex items-center gap-2">
               <h3 class="text-base sm:text-lg font-medium text-zinc-900 dark:text-zinc-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-center gap-1.5" data-i18n="p3Title">
@@ -240,17 +206,17 @@
               </h3>
               <span class="text-[10px] px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-500 font-en">Frontend</span>
             </div>
-            <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-light" data-i18n="p3Desc">
+            <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-light" data-i18n="p3Desc">
               פיתוח משחק בצוות במסגרת האקתון, עם מיקוד מיוחד בחוויית משתמש חלקה, ממשק נקי ותנועה זורמת[cite: 1].
             </p>
-            <div class="flex items-center gap-2 pt-1 text-xs text-zinc-400 font-en">
+            <div class="flex items-center gap-2 pt-1 text-[11px] sm:text-xs text-zinc-400 font-en">
               <span>JavaScript</span> • <span>UI Design</span> • <span>Team Hackathon</span>
             </div>
           </div>
-          <div class="text-xs text-zinc-400 font-en shrink-0">05/2022[cite: 1]</div>
+          <div class="text-[11px] sm:text-xs text-zinc-400 font-en shrink-0">05/2022[cite: 1]</div>
         </article>
 
-        <article class="project-item py-6 group flex flex-col md:flex-row md:items-baseline justify-between gap-4 transition-all" data-category="code">
+        <article class="project-item py-5 sm:py-6 group flex flex-col md:flex-row md:items-baseline justify-between gap-3 sm:gap-4 transition-all" data-category="code">
           <div class="md:w-3/4 space-y-2">
             <div class="flex items-center gap-2">
               <h3 class="text-base sm:text-lg font-medium text-zinc-900 dark:text-zinc-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-center gap-1.5" data-i18n="p4Title">
@@ -258,63 +224,63 @@
               </h3>
               <span class="text-[10px] px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-500 font-en">Freelance</span>
             </div>
-            <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-light" data-i18n="p4Desc">
+            <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-light" data-i18n="p4Desc">
               אפיון ובניית אתרים רספונסיביים ומהירים ללקוחות מקומיים עם חוויית גלישה מודרנית[cite: 1].
             </p>
-            <div class="flex items-center gap-2 pt-1 text-xs text-zinc-400 font-en">
+            <div class="flex items-center gap-2 pt-1 text-[11px] sm:text-xs text-zinc-400 font-en">
               <span>WordPress</span> • <span>HTML/CSS/JS</span> • <span>Responsive</span>
             </div>
           </div>
-          <div class="text-xs text-zinc-400 font-en shrink-0">2022 – 2024[cite: 1]</div>
+          <div class="text-[11px] sm:text-xs text-zinc-400 font-en shrink-0">2022 – 2024[cite: 1]</div>
         </article>
 
       </div>
     </section>
 
-    <!-- قسم المسار والخبرات -->
+    <!-- قسم الخبرات (Experience) -->
     <section id="experience" class="space-y-6">
       <div class="border-b subtle-border pb-3">
         <h2 class="text-xs uppercase tracking-widest text-zinc-400 font-semibold" data-i18n="sectionExpTitle">ניסיון מקצועי והשכלה</h2>
       </div>
 
-      <div class="space-y-8">
+      <div class="space-y-6 sm:space-y-8">
         
-        <div class="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-6 group">
-          <span class="text-xs text-zinc-400 font-en sm:w-36 shrink-0">06/2025 – 08/2026[cite: 1]</span>
+        <div class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6 group">
+          <span class="text-[11px] sm:text-xs text-zinc-400 font-en sm:w-36 shrink-0">06/2025 – 08/2026[cite: 1]</span>
           <div class="space-y-1">
             <h3 class="text-sm font-semibold text-zinc-900 dark:text-zinc-100" data-i18n="exp1Role">מפתח וורדפרס (Wordpress Developer)[cite: 1]</h3>
             <p class="text-xs text-zinc-500" data-i18n="exp1Org">המרכז היהודי-ערבי, אוניברסיטת חיפה[cite: 1]</p>
-            <p class="text-sm text-zinc-600 dark:text-zinc-400 pt-1 font-light leading-relaxed" data-i18n="exp1Desc">
+            <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 pt-0.5 font-light leading-relaxed" data-i18n="exp1Desc">
               ניהול תוכן שוטף, ביצוע שדרוגים והבטחת אתרים פעילים, מאובטחים ותקינים ברמה גבוהה[cite: 1].
             </p>
           </div>
         </div>
 
-        <div class="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-6 group">
-          <span class="text-xs text-zinc-400 font-en sm:w-36 shrink-0">2022 – 2024[cite: 1]</span>
+        <div class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6 group">
+          <span class="text-[11px] sm:text-xs text-zinc-400 font-en sm:w-36 shrink-0">2022 – 2024[cite: 1]</span>
           <div class="space-y-1">
             <h3 class="text-sm font-semibold text-zinc-900 dark:text-zinc-100" data-i18n="exp2Role">מפתח פרונטאנד עצמאי (Freelance Frontend)[cite: 1]</h3>
             <p class="text-xs text-zinc-500" data-i18n="exp2Org">עבודה עם לקוחות ועסקים מקומיים[cite: 1]</p>
-            <p class="text-sm text-zinc-600 dark:text-zinc-400 pt-1 font-light leading-relaxed" data-i18n="exp2Desc">
+            <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 pt-0.5 font-light leading-relaxed" data-i18n="exp2Desc">
               יצירת אתרים מותאמים אישית תוך שימת דגש על עיצוב נקי וביצועים מהירים[cite: 1].
             </p>
           </div>
         </div>
 
-        <div class="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-6 group">
-          <span class="text-xs text-zinc-400 font-en sm:w-36 shrink-0">01/2024 – הווה[cite: 1]</span>
+        <div class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6 group">
+          <span class="text-[11px] sm:text-xs text-zinc-400 font-en sm:w-36 shrink-0">01/2024 – הווה[cite: 1]</span>
           <div class="space-y-1">
             <h3 class="text-sm font-semibold text-zinc-900 dark:text-zinc-100" data-i18n="exp3Role">תואר ראשון בתקשורת (B.A)[cite: 1]</h3>
             <p class="text-xs text-zinc-500" data-i18n="exp3Org">אוניברסיטת חיפה[cite: 1]</p>
           </div>
         </div>
 
-        <div class="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-6 group">
-          <span class="text-xs text-zinc-400 font-en sm:w-36 shrink-0">03/2022 – 09/2022[cite: 1]</span>
+        <div class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6 group">
+          <span class="text-[11px] sm:text-xs text-zinc-400 font-en sm:w-36 shrink-0">03/2022 – 09/2022[cite: 1]</span>
           <div class="space-y-1">
             <h3 class="text-sm font-semibold text-zinc-900 dark:text-zinc-100" data-i18n="exp4Role">Full-Stack Bootcamp (720 שעות)[cite: 1]</h3>
             <p class="text-xs text-zinc-500" data-i18n="exp4Org">Appleseeds Academy[cite: 1]</p>
-            <p class="text-sm text-zinc-600 dark:text-zinc-400 pt-1 font-light leading-relaxed" data-i18n="exp4Desc">
+            <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 pt-0.5 font-light leading-relaxed" data-i18n="exp4Desc">
               הכשרה אינטנסיבית המעודדת למידה עצמאית: JavaScript, React.js, Node.js, HTML, CSS, SCSS, MongoDB, Git, ו-RESTful APIs[cite: 1].
             </p>
           </div>
@@ -323,52 +289,52 @@
       </div>
     </section>
 
-    <!-- قسم المهارات -->
+    <!-- قسم المهارات (Skills) -->
     <section id="skills" class="space-y-6">
       <div class="border-b subtle-border pb-3">
         <h2 class="text-xs uppercase tracking-widest text-zinc-400 font-semibold" data-i18n="sectionSkillsTitle">כישורים וארגז כלים</h2>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 text-sm">
         <div class="space-y-3">
           <h3 class="text-xs font-semibold uppercase tracking-wider text-zinc-500" data-i18n="skillCatDev">פיתוח וטכנולוגיות</h3>
           <div class="flex flex-wrap gap-2 text-xs font-en">
-            <span class="px-3 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border subtle-border">WordPress</span>
-            <span class="px-3 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border subtle-border">JavaScript</span>
-            <span class="px-3 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border subtle-border">React.js</span>
-            <span class="px-3 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border subtle-border">Node.js</span>
-            <span class="px-3 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border subtle-border">HTML / CSS / SCSS</span>
-            <span class="px-3 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border subtle-border">MongoDB</span>
-            <span class="px-3 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border subtle-border">Git</span>
+            <span class="px-2.5 sm:px-3 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border subtle-border">WordPress</span>
+            <span class="px-2.5 sm:px-3 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border subtle-border">JavaScript</span>
+            <span class="px-2.5 sm:px-3 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border subtle-border">React.js</span>
+            <span class="px-2.5 sm:px-3 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border subtle-border">Node.js</span>
+            <span class="px-2.5 sm:px-3 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border subtle-border">HTML / CSS / SCSS</span>
+            <span class="px-2.5 sm:px-3 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border subtle-border">MongoDB</span>
+            <span class="px-2.5 sm:px-3 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border subtle-border">Git</span>
           </div>
         </div>
 
         <div class="space-y-3">
           <h3 class="text-xs font-semibold uppercase tracking-wider text-zinc-500" data-i18n="skillCatMkt">שיווק, תוכן ועיצוב</h3>
           <div class="flex flex-wrap gap-2 text-xs font-en">
-            <span class="px-3 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border subtle-border">Digital Marketing</span>
-            <span class="px-3 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border subtle-border">Content Creation</span>
-            <span class="px-3 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border subtle-border">SEO & PPC</span>
-            <span class="px-3 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border subtle-border">Figma</span>
-            <span class="px-3 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border subtle-border">Photoshop</span>
-            <span class="px-3 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border subtle-border">Canva</span>
-            <span class="px-3 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border subtle-border">CapCut</span>
+            <span class="px-2.5 sm:px-3 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border subtle-border">Digital Marketing</span>
+            <span class="px-2.5 sm:px-3 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border subtle-border">Content Creation</span>
+            <span class="px-2.5 sm:px-3 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border subtle-border">SEO & PPC</span>
+            <span class="px-2.5 sm:px-3 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border subtle-border">Figma</span>
+            <span class="px-2.5 sm:px-3 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border subtle-border">Photoshop</span>
+            <span class="px-2.5 sm:px-3 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border subtle-border">Canva</span>
+            <span class="px-2.5 sm:px-3 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border subtle-border">CapCut</span>
           </div>
         </div>
       </div>
 
-      <div class="pt-4 border-t subtle-border flex flex-wrap gap-6 text-xs text-zinc-500">
+      <div class="pt-4 border-t subtle-border flex flex-wrap gap-4 sm:gap-6 text-xs text-zinc-500">
         <div><span data-i18n="langAr">ערבית:</span> <span class="text-zinc-800 dark:text-zinc-200 font-medium" data-i18n="langArLevel">שפת אם (Native)[cite: 1]</span></div>
         <div><span data-i18n="langHe">עברית:</span> <span class="text-zinc-800 dark:text-zinc-200 font-medium" data-i18n="langHeLevel">רמה מתקדמת (Advanced)[cite: 1]</span></div>
         <div><span data-i18n="langEn">אנגלית:</span> <span class="text-zinc-800 dark:text-zinc-200 font-medium" data-i18n="langEnLevel">רמה בינונית (Intermediate)[cite: 1]</span></div>
       </div>
     </section>
 
-    <!-- الفوتر -->
-    <footer class="pt-8 border-t subtle-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-400 font-light">
+    <!-- الفوتر (Footer) -->
+    <footer class="pt-8 border-t subtle-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-400 font-light text-center sm:text-start">
       <p>© 2026 Abed Khalaf. <span data-i18n="footerTagline">מעוצב בפשטות ודיוק.</span></p>
       
-      <div class="flex items-center gap-4 font-en">
+      <div class="flex items-center gap-3 sm:gap-4 font-en">
         <a href="https://github.com/khalaf3bed" target="_blank" rel="noopener noreferrer" class="hover:text-zinc-900 dark:hover:text-white transition-colors">GitHub</a>
         <span>/</span>
         <a href="https://www.linkedin.com/in/3bdallahkhalaf/?isSelfProfile=true" target="_blank" rel="noopener noreferrer" class="hover:text-zinc-900 dark:hover:text-white transition-colors">LinkedIn</a>
@@ -381,305 +347,7 @@
 
   </main>
 
-  <script>
-    lucide.createIcons();
-
-    const translations = {
-      he: {
-        dir: 'rtl',
-        toastCopied: 'האימייל הועתק בהצלחה!',
-        navWork: 'עבודות',
-        navExp: 'ניסיון',
-        navSkills: 'כישורים',
-        badgeAvailable: 'זמין לפרויקטים חדשים',
-        heroTitle: 'עבד ח\'לף.',
-        heroBio: 'מפתח אתרים ואיש תקשורת שיווקית. משלב בין קוד נקי לחשיבה אסטרטגית ליצירת חוויות דיגיטליות בעלות משמעות וערך.',
-        btnContact: 'בוא נדבר',
-        btnCopyEmail: 'העתק אימייל',
-        mailSubject: 'פנייה מהאתר האישי - עבד ח\'לף',
-        sectionWorkTitle: 'פרויקטים נבחרים',
-        filterAll: 'הכל',
-        filterCode: 'פיתוח וקוד',
-        filterMarketing: 'שיווק ואסטרטגיה',
-        p1Title: 'אסטרטגיה שיווקית למרכז הספורט',
-        p1Desc: 'בניית תוכנית תקשורת שיווקית אסטרטגית רב-ערוצית למרכז הספורט באוניברסיטת חיפה, כולל מחקר קהלים, מיתוג וחיבור בין כושר להצלחה אקדמית.',
-        p2Title: 'ChikChak — Resume Builder',
-        p2Desc: 'אפליקציית ווב שנבנתה מאפס בשבוע ימים, המאפשרת יצירת קורות חיים מותאמים להייטק במהירות וללא בזבוז זמן.',
-        p3Title: 'משחק זיכרון אינטראקטיבי (האקתון)',
-        p3Desc: 'פיתוח משחק בצוות במסגרת האקתון, עם מיקוד מיוחד בחוויית משתמש חלקה, ממשק נקי ותנועה זורמת.',
-        p4Title: 'אתרי לקוחות מותאמים אישית',
-        p4Desc: 'אפיון ובניית אתרים רספונסיביים ומהירים ללקוחות מקומיים עם חוויית גלישה מודרנית.',
-        sectionExpTitle: 'ניסיון מקצועי והשכלה',
-        exp1Role: 'מפתח וורדפרס (Wordpress Developer)',
-        exp1Org: 'המרכז היהודי-ערבי, אוניברסיטת חיפה',
-        exp1Desc: 'ניהול תוכן שוטף, ביצוע שדרוגים והבטחת אתרים פעילים, מאובטחים ותקינים ברמה גבוהה.',
-        exp2Role: 'מפתח פרונטאנד עצמאי (Freelance Frontend)',
-        exp2Org: 'עבודה עם לקוחות ועסקים מקומיים',
-        exp2Desc: 'יצירת אתרים מותאמים אישית תוך שימת דגש על עיצוב נקי וביצועים מהירים.',
-        exp3Role: 'תואר ראשון בתקשורת (B.A)',
-        exp3Org: 'אוניברסיטת חיפה',
-        exp4Role: 'Full-Stack Bootcamp (720 שעות)',
-        exp4Org: 'Appleseeds Academy',
-        exp4Desc: 'הכשרה אינטנסיבית המעודדת למידה עצמאית: JavaScript, React, Node.js, MongoDB, Git ו-REST APIs.',
-        sectionSkillsTitle: 'כישורים וארגז כלים',
-        skillCatDev: 'פיתוח וטכנולוגיות',
-        skillCatMkt: 'שיווק, תוכן ועיצוב',
-        langAr: 'ערבית:',
-        langArLevel: 'שפת אם (Native)',
-        langHe: 'עברית:',
-        langHeLevel: 'רמה מתקדמת (Advanced)',
-        langEn: 'אנגלית:',
-        langEnLevel: 'רמה בינונית (Intermediate)',
-        footerTagline: 'מעוצב בפשטות ודיוק.'
-      },
-      ar: {
-        dir: 'rtl',
-        toastCopied: 'تم نسخ البريد الإلكتروني بنجاح!',
-        navWork: 'الأعمال',
-        navExp: 'المسار',
-        navSkills: 'المهارات',
-        badgeAvailable: 'متاح لاستقبال مشاريع جديدة',
-        heroTitle: 'عبد خلف.',
-        heroBio: 'مطور ويب ومتخصص في الاتصال التسويقي. أدمج بين كتابة الكود البرمجي النظيف والتفكير الاستراتيجي لبناء مواقع تفاعلية هادفة وذات قيمة.',
-        btnContact: 'تواصل معي',
-        btnCopyEmail: 'نسخ الإيميل',
-        mailSubject: 'تواصل من الموقع الشخصي - عبد خلف',
-        sectionWorkTitle: 'المشاريع المختارة',
-        filterAll: 'الكل',
-        filterCode: 'برمجة',
-        filterMarketing: 'تسويق واستراتيجية',
-        p1Title: 'استراتيجية تسويقية لمركز الرياضة',
-        p1Desc: 'بناء خطة اتصال تسويقية استراتيجية متكاملة لمركز الرياضة بجامعة حيفا، تتضمن أبحاث الجمهور، تحليل المنافسين، وسرد قصصي يربط الرياضة بالنجاح الأكاديمي.',
-        p2Title: 'ChikChak — Resume Builder',
-        p2Desc: 'تطبيق ويب تم بناؤه من الصفر خلال أسبوع واحد مخصص لمجال التقنية لتمكين المستخدمين من إعداد سير ذاتية متقنة باحترافية وسرعة.',
-        p3Title: 'لعبة ذاكرة تفاعلية (هاكاثون)',
-        p3Desc: 'تطوير لعبة تفاعلية جماعية خلال هاكاثون، مع التركيز المكثف على تجربة المستخدم وسلاسة واجهة الاستخدام (UI).',
-        p4Title: 'مواقع مخصصة لعملاء ومصالح تجارية',
-        p4Desc: 'تصميم وبناء مواقع سريعة التجاوب ومتوافقة مع مختلف الشاشات بالتعاون مع عملاء محليين.',
-        sectionExpTitle: 'المسار المهني والأكاديمي',
-        exp1Role: 'مطور ووردبريس (Wordpress Developer)',
-        exp1Org: 'المركز اليهودي-العربي، جامعة حيفا',
-        exp1Desc: 'إدارة المحتوى الرقمي، تحديث وتطوير المواقع لضمان تشغيل عالي الجودة والأداء.',
-        exp2Role: 'مطور واجهات مستقل (Freelance Frontend)',
-        exp2Org: 'مشاريع وعملاء محليين',
-        exp2Desc: 'تطوير مواقع عصرية متجاوبة وسهلة الاستخدام تركز على سرعة التحميل ووضوح المحتوى.',
-        exp3Role: 'بكالوريوس في الاتصال والإعلام (B.A)',
-        exp3Org: 'جامعة حيفا',
-        exp4Role: 'Full-Stack Bootcamp (720 ساعة)',
-        exp4Org: 'Appleseeds Academy',
-        exp4Desc: 'تدريب مكثف: JavaScript, React, Node.js, MongoDB, Git, و-RESTful APIs.',
-        sectionSkillsTitle: 'المهارات والتقنيات',
-        skillCatDev: 'التطوير والبرمجة',
-        skillCatMkt: 'التسويق والتصميم',
-        langAr: 'العربية:',
-        langArLevel: 'اللغة الأم (Native)',
-        langHe: 'العبرية:',
-        langHeLevel: 'مستوى متقدم (Advanced)',
-        langEn: 'الإنجليزية:',
-        langEnLevel: 'مستوى متوسط (Intermediate)',
-        footerTagline: 'مصمم بأسلوب تبسيطي هادئ.'
-      },
-      en: {
-        dir: 'ltr',
-        toastCopied: 'Email copied to clipboard!',
-        navWork: 'Work',
-        navExp: 'Journey',
-        navSkills: 'Skills',
-        badgeAvailable: 'Available for new projects',
-        heroTitle: 'Abed Khalaf.',
-        heroBio: 'Web Developer & Marketing Communication Specialist. Merging clean code with strategic insights to build purposeful digital experiences.',
-        btnContact: 'Get in Touch',
-        btnCopyEmail: 'Copy Email',
-        mailSubject: 'Inquiry from Portfolio - Abed Khalaf',
-        sectionWorkTitle: 'Selected Projects',
-        filterAll: 'All',
-        filterCode: 'Code',
-        filterMarketing: 'Marketing & Strategy',
-        p1Title: 'Sports Center Marketing Strategy',
-        p1Desc: 'Developed a comprehensive marketing communication strategy for Haifa University Sports Center, connecting athletic performance with academic success.',
-        p2Title: 'ChikChak — Resume Builder',
-        p2Desc: 'A fast, tech-focused resume builder built from scratch in one week using ReactJS to help job seekers create resumes effortlessly.',
-        p3Title: 'Interactive Memory Game (Hackathon)',
-        p3Desc: 'Collaborative development of an engaging memory game during a high-paced hackathon, centered on intuitive UI/UX design.',
-        p4Title: 'Custom Client Websites',
-        p4Desc: 'Designed and engineered responsive, high-performance web solutions for businesses and local clients.',
-        sectionExpTitle: 'Experience & Education',
-        exp1Role: 'WordPress Developer',
-        exp1Org: 'Jewish-Arab Center, University of Haifa',
-        exp1Desc: 'Overseeing content management, security updates, and performance optimization across multi-stakeholder web platforms.',
-        exp2Role: 'Freelance Frontend Developer',
-        exp2Org: 'Local Businesses & Independent Clients',
-        exp2Desc: 'Built modern, responsive web experiences with strong emphasis on speed, layout clarity, and mobile usability.',
-        exp3Role: 'B.A. in Communication',
-        exp3Org: 'University of Haifa',
-        exp4Role: 'Full-Stack Bootcamp (720 Hours)',
-        exp4Org: 'Appleseeds Academy',
-        exp4Desc: 'Intensive engineering program covering JavaScript, React, Node.js, MongoDB, Git workflows, and RESTful APIs.',
-        sectionSkillsTitle: 'Capabilities & Toolkit',
-        skillCatDev: 'Engineering & CMS',
-        skillCatMkt: 'Marketing & Design',
-        langAr: 'Arabic:',
-        langArLevel: 'Native',
-        langHe: 'Hebrew:',
-        langHeLevel: 'Advanced',
-        langEn: 'English:',
-        langEnLevel: 'Intermediate',
-        footerTagline: 'Crafted with precision & minimalism.'
-      },
-      es: {
-        dir: 'ltr',
-        toastCopied: '¡Correo copiado con éxito!',
-        navWork: 'Proyectos',
-        navExp: 'Experiencia',
-        navSkills: 'Habilidades',
-        badgeAvailable: 'Disponible para nuevos proyectos',
-        heroTitle: 'Abed Khalaf.',
-        heroBio: 'Desarrollador Web y Especialista en Comunicación y Marketing. Combinando código limpio con visión estratégica para crear experiencias digitales de alto impacto.',
-        btnContact: 'Contactar',
-        btnCopyEmail: 'Copiar Email',
-        mailSubject: 'Contacto desde el Portafolio - Abed Khalaf',
-        sectionWorkTitle: 'Proyectos Destacados',
-        filterAll: 'Todos',
-        filterCode: 'Desarrollo',
-        filterMarketing: 'Marketing y Estrategia',
-        p1Title: 'Estrategia de Marketing - Centro Deportivo',
-        p1Desc: 'Desarrollo de un plan de comunicación estratégica multicanal para el Centro Deportivo de la Universidad de Haifa, uniendo el deporte con el éxito académico.',
-        p2Title: 'ChikChak — Creador de Currículums',
-        p2Desc: 'Aplicación web creada desde cero en una semana con ReactJS, diseñada para crear currículums para el sector tecnológico de forma rápida y sencilla.',
-        p3Title: 'Juego de Memoria Interactivo (Hackathon)',
-        p3Desc: 'Desarrollo colaborativo durante un hackathon, centrado en una interfaz de usuario fluida y una experiencia visual intuitiva.',
-        p4Title: 'Sitios Web a Medida para Clientes',
-        p4Desc: 'Diseño y desarrollo de sitios web modernos, rápidos y totalmente adaptables a móviles para empresas y clientes locales.',
-        sectionExpTitle: 'Experiencia y Educación',
-        exp1Role: 'Desarrollador WordPress',
-        exp1Org: 'Centro Judeo-Árabe, Universidad de Haifa',
-        exp1Desc: 'Gestión de contenidos, actualizaciones técnicas y mantenimiento de plataformas web de alto rendimiento.',
-        exp2Role: 'Desarrollador Frontend Freelance',
-        exp2Org: 'Clientes y Empresas Locales',
-        exp2Desc: 'Desarrollo de soluciones web a medida con enfoque en velocidad, limpieza visual y facilidad de uso.',
-        exp3Role: 'Licenciatura en Comunicación (B.A.)',
-        exp3Org: 'Universidad de Haifa',
-        exp4Role: 'Bootcamp Full-Stack (720 horas)',
-        exp4Org: 'Appleseeds Academy',
-        exp4Desc: 'Formación intensiva: JavaScript, React.js, Node.js, HTML, CSS, MongoDB, Git y APIs RESTful.',
-        sectionSkillsTitle: 'Habilidades y Tecnologías',
-        skillCatDev: 'Desarrollo y CMS',
-        skillCatMkt: 'Marketing y Diseño',
-        langAr: 'Árabe:',
-        langArLevel: 'Nativo',
-        langHe: 'Hebreo:',
-        langHeLevel: 'Avanzado',
-        langEn: 'Inglés:',
-        langEnLevel: 'Intermedio',
-        footerTagline: 'Diseñado con precisión y minimalismo.'
-      }
-    };
-
-    function setLanguage(lang) {
-      const selected = translations[lang] || translations.he;
-      document.documentElement.lang = lang;
-      document.documentElement.dir = selected.dir;
-
-      const progressBar = document.getElementById('scroll-progress');
-      if (selected.dir === 'rtl') {
-        progressBar.classList.remove('origin-left');
-        progressBar.classList.add('origin-right');
-      } else {
-        progressBar.classList.remove('origin-right');
-        progressBar.classList.add('origin-left');
-      }
-
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (selected[key]) {
-          el.textContent = selected[key];
-        }
-      });
-
-      const contactBtn = document.getElementById('contact-action-btn');
-      if (contactBtn && selected.mailSubject) {
-        contactBtn.href = `mailto:abdallahkf10@gmail.com?subject=${encodeURIComponent(selected.mailSubject)}`;
-      }
-
-      localStorage.setItem('preferred_lang', lang);
-      document.getElementById('lang-switcher').value = lang;
-    }
-
-    const initialLang = localStorage.getItem('preferred_lang') || 'he';
-    setLanguage(initialLang);
-
-    document.getElementById('lang-switcher').addEventListener('change', (e) => {
-      setLanguage(e.target.value);
-    });
-
-    window.addEventListener('scroll', () => {
-      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = totalScroll > 0 ? (window.scrollY / totalScroll) : 0;
-      document.getElementById('scroll-progress').style.transform = `scaleX(${progress})`;
-    });
-
-    const glow = document.getElementById('ambient-glow');
-    window.addEventListener('mousemove', (e) => {
-      glow.style.left = `${e.clientX}px`;
-      glow.style.top = `${e.clientY}px`;
-    });
-
-    const copyBtn = document.getElementById('copy-email-btn');
-    const toast = document.getElementById('toast');
-    copyBtn.addEventListener('click', () => {
-      const email = copyBtn.getAttribute('data-email');
-      navigator.clipboard.writeText(email).then(() => {
-        toast.classList.remove('opacity-0', 'translate-y-3', 'pointer-events-none');
-        setTimeout(() => {
-          toast.classList.add('opacity-0', 'translate-y-3', 'pointer-events-none');
-        }, 2200);
-      });
-    });
-
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const projectItems = document.querySelectorAll('.project-item');
-
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => {
-          b.classList.remove('active', 'bg-zinc-900', 'text-white', 'dark:bg-zinc-100', 'dark:text-zinc-900');
-          b.classList.add('text-zinc-500');
-        });
-        btn.classList.add('active', 'bg-zinc-900', 'text-white', 'dark:bg-zinc-100', 'dark:text-zinc-900');
-        btn.classList.remove('text-zinc-500');
-
-        const filter = btn.getAttribute('data-filter');
-        projectItems.forEach(item => {
-          const category = item.getAttribute('data-category');
-          if (filter === 'all' || category === filter) {
-            item.style.display = 'flex';
-            setTimeout(() => { item.style.opacity = '1'; }, 10);
-          } else {
-            item.style.opacity = '0';
-            setTimeout(() => { item.style.display = 'none'; }, 200);
-          }
-        });
-      });
-    });
-
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    const htmlElement = document.documentElement;
-
-    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      htmlElement.classList.add('dark');
-    } else {
-      htmlElement.classList.remove('dark');
-    }
-
-    themeToggleBtn.addEventListener('click', () => {
-      htmlElement.classList.toggle('dark');
-      if (htmlElement.classList.contains('dark')) {
-        localStorage.setItem('theme', 'dark');
-      } else {
-        localStorage.setItem('theme', 'light');
-      }
-      lucide.createIcons();
-    });
-  </script>
+  <!-- Custom JavaScript File -->
+  <script src="script.js"></script>
 </body>
 </html>
