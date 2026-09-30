@@ -1,9 +1,9 @@
-// تهيئة الأيقونات
+// אתחול אייקונים
 if (typeof lucide !== 'undefined') {
   lucide.createIcons();
 }
 
-// قاموس الترجمات للغات الأربعة
+// מילון תרגומים מלא ל-4 השפות כולל טקסט סטטוס כפול (פרילנס / שכיר)
 const translations = {
   he: {
     dir: 'rtl',
@@ -11,7 +11,8 @@ const translations = {
     navWork: 'עבודות',
     navExp: 'ניסיון',
     navSkills: 'כישורים',
-    badgeAvailable: 'זמין לפרויקטים חדשים',
+    status1: 'זמין לפרויקטים חדשים',
+    status2: 'פתוח להצעות עבודה ומשרות',
     heroTitle: 'עבד ח\'לף.',
     heroBio: 'מפתח אתרים ואיש תקשורת שיווקית. משלב בין קוד נקי לחשיבה אסטרטגית ליצירת חוויות דיגיטליות בעלות משמעות וערך.',
     btnContact: 'בוא נדבר',
@@ -58,7 +59,8 @@ const translations = {
     navWork: 'الأعمال',
     navExp: 'المسار',
     navSkills: 'المهارات',
-    badgeAvailable: 'متاح لاستقبال مشاريع جديدة',
+    status1: 'متاح لاستقبال مشاريع جديدة',
+    status2: 'منفتح على فرص عمل وعروض توظيف',
     heroTitle: 'عبد خلف.',
     heroBio: 'مطور ويب ومتخصص في الاتصال التسويقي. أدمج بين كتابة الكود البرمجي النظيف والتفكير الاستراتيجي لبناء مواقع تفاعلية هادفة وذات قيمة.',
     btnContact: 'تواصل معي',
@@ -105,7 +107,8 @@ const translations = {
     navWork: 'Work',
     navExp: 'Journey',
     navSkills: 'Skills',
-    badgeAvailable: 'Available for new projects',
+    status1: 'Available for new projects',
+    status2: 'Open to full-time opportunities',
     heroTitle: 'Abed Khalaf.',
     heroBio: 'Web Developer & Marketing Communication Specialist. Merging clean code with strategic insights to build purposeful digital experiences.',
     btnContact: 'Get in Touch',
@@ -152,7 +155,8 @@ const translations = {
     navWork: 'Proyectos',
     navExp: 'Experiencia',
     navSkills: 'Habilidades',
-    badgeAvailable: 'Disponible para nuevos proyectos',
+    status1: 'Disponible para nuevos proyectos',
+    status2: 'Abierto a oportunidades laborales',
     heroTitle: 'Abed Khalaf.',
     heroBio: 'Desarrollador Web y Especialista en Comunicación y Marketing. Combinando código limpio con visión estratégica para crear experiencias digitales de alto impacto.',
     btnContact: 'Contactar',
@@ -195,7 +199,48 @@ const translations = {
   }
 };
 
-// وظيفة تبديل اللغات
+// 1. ניהול מצב יום / לילה (אוטומטי לפי הטלפון + בחירה ידנית)
+const themeToggleBtn = document.getElementById('theme-toggle');
+const htmlElement = document.documentElement;
+const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+function applyTheme(isDark) {
+  if (isDark) {
+    htmlElement.classList.add('dark');
+  } else {
+    htmlElement.classList.remove('dark');
+  }
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
+}
+
+// קביעת מצב בטעינה (שמירה קודמת או הגדרת מכשיר)
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+  applyTheme(savedTheme === 'dark');
+} else {
+  applyTheme(systemPrefersDark.matches);
+}
+
+// האזנה לשינוי חי בהגדרות הטלפון/מחשב
+systemPrefersDark.addEventListener('change', (e) => {
+  if (!localStorage.getItem('theme')) {
+    applyTheme(e.matches);
+  }
+});
+
+// לחיצה על כפתור החלפת מצב
+if (themeToggleBtn) {
+  themeToggleBtn.addEventListener('click', () => {
+    const isCurrentlyDark = htmlElement.classList.contains('dark');
+    const newTheme = isCurrentlyDark ? 'light' : 'dark';
+    localStorage.setItem('theme', newTheme);
+    applyTheme(newTheme === 'dark');
+  });
+}
+
+// 2. ניהול והחלפת שפות
 function setLanguage(lang) {
   const selected = translations[lang] || translations.he;
   document.documentElement.lang = lang;
@@ -227,9 +272,10 @@ function setLanguage(lang) {
   localStorage.setItem('preferred_lang', lang);
   const switcher = document.getElementById('lang-switcher');
   if (switcher) switcher.value = lang;
+
+  updateStatusText();
 }
 
-// البدء باللغة العبرية كافتراضية
 const initialLang = localStorage.getItem('preferred_lang') || 'he';
 setLanguage(initialLang);
 
@@ -240,7 +286,29 @@ if (langSwitcher) {
   });
 }
 
-// شريط تقدم التمرير
+// 3. החלפת טקסט סטטוס זמינות (פרויקטים / שכיר) כל 4 שניות
+let currentStatusIndex = 0;
+const statusTextEl = document.getElementById('status-badge-text');
+
+function updateStatusText() {
+  if (!statusTextEl) return;
+  const currentLang = document.documentElement.lang || 'he';
+  const langPack = translations[currentLang] || translations.he;
+  const statuses = [langPack.status1, langPack.status2];
+
+  statusTextEl.style.opacity = '0';
+  setTimeout(() => {
+    statusTextEl.textContent = statuses[currentStatusIndex];
+    statusTextEl.style.opacity = '1';
+  }, 250);
+}
+
+setInterval(() => {
+  currentStatusIndex = (currentStatusIndex === 0) ? 1 : 0;
+  updateStatusText();
+}, 4000);
+
+// 4. פס התקדמות קריאה
 window.addEventListener('scroll', () => {
   const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
   const progress = totalScroll > 0 ? (window.scrollY / totalScroll) : 0;
@@ -248,7 +316,7 @@ window.addEventListener('scroll', () => {
   if (pb) pb.style.transform = `scaleX(${progress})`;
 });
 
-// توهج الماوس للكمبيوتر فقط
+// 5. תאורת עכבר רכה למחשב
 const glow = document.getElementById('ambient-glow');
 if (glow && window.matchMedia('(pointer: fine)').matches) {
   window.addEventListener('mousemove', (e) => {
@@ -257,7 +325,7 @@ if (glow && window.matchMedia('(pointer: fine)').matches) {
   });
 }
 
-// نسخ البريد الإلكتروني
+// 6. העתקת אימייל עם חלונית Toast
 const copyBtn = document.getElementById('copy-email-btn');
 const toast = document.getElementById('toast');
 if (copyBtn && toast) {
@@ -269,13 +337,12 @@ if (copyBtn && toast) {
         toast.classList.add('opacity-0', 'translate-y-3', 'pointer-events-none');
       }, 2200);
     }).catch(() => {
-      // Fallback في حال منع المتصفح الحافظة
       window.location.href = `mailto:${email}`;
     });
   });
 }
 
-// تصفية المشاريع
+// 7. סינון פרויקטים
 const filterBtns = document.querySelectorAll('.filter-btn');
 const projectItems = document.querySelectorAll('.project-item');
 
@@ -301,48 +368,3 @@ filterBtns.forEach(btn => {
     });
   });
 });
-
-// ניהול מצב יום / לילה (אוטומטי לפי הטלפון + בחירה ידנית)
-const themeToggleBtn = document.getElementById('theme-toggle');
-const htmlElement = document.documentElement;
-const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-
-// פונקציה להחלת המצב
-function applyTheme(isDark) {
-  if (isDark) {
-    htmlElement.classList.add('dark');
-  } else {
-    htmlElement.classList.remove('dark');
-  }
-  if (typeof lucide !== 'undefined') {
-    lucide.createIcons();
-  }
-}
-
-// 1. קביעת המצב בטעינה: אם המשתמש בחר ידנית נשתמש בזה, אחרת לפי הגדרת הטלפון
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme) {
-  applyTheme(savedTheme === 'dark');
-} else {
-  applyTheme(systemPrefersDark.matches);
-}
-
-// 2. האזנה לשינוי אוטומטי בהגדרות הטלפון בזמן אמת
-systemPrefersDark.addEventListener('change', (e) => {
-  // משתנה אוטומטית רק אם המשתמש לא בחר ידנית מצב קבוע
-  if (!localStorage.getItem('theme')) {
-    applyTheme(e.matches);
-  }
-});
-
-// 3. לחיצה ידנית על כפתור השמש/ירח
-if (themeToggleBtn) {
-  themeToggleBtn.addEventListener('click', () => {
-    const isCurrentlyDark = htmlElement.classList.contains('dark');
-    const newTheme = isCurrentlyDark ? 'light' : 'dark';
-    
-    // שמירת הבחירה הידנית
-    localStorage.setItem('theme', newTheme);
-    applyTheme(newTheme === 'dark');
-  });
-}
