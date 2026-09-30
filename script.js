@@ -302,24 +302,47 @@ filterBtns.forEach(btn => {
   });
 });
 
-// الوضع الليلي والنهاري
+// ניהול מצב יום / לילה (אוטומטי לפי הטלפון + בחירה ידנית)
 const themeToggleBtn = document.getElementById('theme-toggle');
 const htmlElement = document.documentElement;
+const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 
-if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-  htmlElement.classList.add('dark');
-} else {
-  htmlElement.classList.remove('dark');
+// פונקציה להחלת המצב
+function applyTheme(isDark) {
+  if (isDark) {
+    htmlElement.classList.add('dark');
+  } else {
+    htmlElement.classList.remove('dark');
+  }
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
 }
 
+// 1. קביעת המצב בטעינה: אם המשתמש בחר ידנית נשתמש בזה, אחרת לפי הגדרת הטלפון
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+  applyTheme(savedTheme === 'dark');
+} else {
+  applyTheme(systemPrefersDark.matches);
+}
+
+// 2. האזנה לשינוי אוטומטי בהגדרות הטלפון בזמן אמת
+systemPrefersDark.addEventListener('change', (e) => {
+  // משתנה אוטומטית רק אם המשתמש לא בחר ידנית מצב קבוע
+  if (!localStorage.getItem('theme')) {
+    applyTheme(e.matches);
+  }
+});
+
+// 3. לחיצה ידנית על כפתור השמש/ירח
 if (themeToggleBtn) {
   themeToggleBtn.addEventListener('click', () => {
-    htmlElement.classList.toggle('dark');
-    if (htmlElement.classList.contains('dark')) {
-      localStorage.setItem('theme', 'dark');
-    } else {
-      localStorage.setItem('theme', 'light');
-    }
-    if (typeof lucide !== 'undefined') lucide.createIcons();
+    const isCurrentlyDark = htmlElement.classList.contains('dark');
+    const newTheme = isCurrentlyDark ? 'light' : 'dark';
+    
+    // שמירת הבחירה הידנית
+    localStorage.setItem('theme', newTheme);
+    applyTheme(newTheme === 'dark');
   });
 }
