@@ -38,7 +38,7 @@
   <!-- توهج الماوس (يظهر فقط على أجهزة الكمبيوتر لمنع تعليق التمرير في الهواتف) -->
   <div id="ambient-glow" class="hidden md:block"></div>
 
-  <!-- شريط تقدم القراءة في أعلى الصفحة -->
+  <!-- שريط تقدم القراءة في أعلى الصفحة -->
   <div id="scroll-progress" class="fixed top-0 left-0 right-0 h-[2px] bg-zinc-900 dark:bg-zinc-100 z-50 origin-right transition-transform duration-75"></div>
 
   <!-- نافذة تنبيه لنسخ البريد -->
@@ -47,7 +47,7 @@
     <span data-i18n="toastCopied">האימייל הועתק בהצלחה!</span>
   </div>
 
-  <!-- شريط التنقل العلوي المحسن بالكامل للهواتف الذكية -->
+  <!-- שريط التنقل العلوي المحسن بالكامل للهواتف الذكية -->
   <header class="sticky top-3 sm:top-5 z-40 max-w-3xl mx-auto px-3 sm:px-4">
     <div class="backdrop-blur-md bg-white/90 dark:bg-zinc-900/90 border subtle-border shadow-sm rounded-2xl sm:rounded-full px-3 sm:px-5 py-2.5 flex items-center justify-between transition-all">
       <a href="#" class="flex items-center gap-2 group shrink-0">
@@ -92,7 +92,7 @@
           <option value="es" class="bg-white dark:bg-zinc-900">ES</option>
         </select>
 
-        <!-- زر المظهر الليلي/النهاري -->
+        <!-- زر המראה הלילי/יומי -->
         <button id="theme-toggle" class="p-1.5 rounded-full text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all">
           <i data-lucide="moon" class="w-3.5 h-3.5 hidden dark:block"></i>
           <i data-lucide="sun" class="w-3.5 h-3.5 block dark:hidden"></i>
@@ -103,7 +103,7 @@
 
   <main class="max-w-3xl mx-auto px-4 sm:px-6 pt-8 sm:pt-14 pb-20 space-y-16 sm:space-y-24 relative z-10">
 
-    <!-- قسم الهيرو (Hero) -->
+    <!-- قسم ההירו (Hero) -->
     <section class="space-y-5 pt-2">
       <div class="flex flex-col-reverse sm:flex-row items-start sm:items-center justify-between gap-5 sm:gap-6">
         <div class="space-y-2.5">
@@ -115,7 +115,7 @@
             עבד ח'לף.
           </h1>
           <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 font-light max-w-xl leading-relaxed" data-i18n="heroBio">
-            מפתח אתרים ואיש תקשורת שיווקית[cite: 1]. משלב בין קוד נקי לחשיבה אסטרטגית ליצירת חוויות דיגיטליות בעלות משמעות וערך[cite: 1].
+            מפתח אתרים ואיש תקשורת שיווקית. משלב בין קוד נקי לחשיבה אסטרטגית ליצירת חוויות דיגיטליות בעלות משמעות וערך.
           </p>
         </div>
 
@@ -128,7 +128,7 @@
         </div>
       </div>
 
-      <!-- أزرار الإجراءات السريعة في الهاتف والكمبيوتر -->
+      <!-- פעולות מהירות -->
       <div class="flex flex-wrap items-center gap-2.5 pt-1">
         <a id="contact-action-btn" href="mailto:abdallahkf10@gmail.com?subject=פנייה%20מהאתר%20האישי%20-%20עבד%20ח'לף" class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl bg-zinc-900 text-zinc-50 dark:bg-zinc-100 dark:text-zinc-900 text-xs sm:text-sm font-medium hover:opacity-90 active:scale-95 transition-all shadow-sm">
           <i data-lucide="send" class="w-3.5 h-3.5"></i>
@@ -147,12 +147,12 @@
       </div>
     </section>
 
-    <!-- قسم المشاريع (Works) -->
+    <!-- פרויקטים נבחרים (Works) -->
     <section id="work" class="space-y-5">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b subtle-border pb-3 gap-3">
         <h2 class="text-xs uppercase tracking-widest text-zinc-400 font-semibold" data-i18n="sectionWorkTitle">פרויקטים נבחרים</h2>
         
-        <!-- أزرار الفلترة المتوافقة مع لمس الهاتف -->
+        <!-- כפתורי סינון מהירים -->
         <div class="flex items-center gap-1.5 text-xs overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
           <button class="filter-btn active px-3 py-1 rounded-full bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 transition-all whitespace-nowrap" data-filter="all" data-i18n="filterAll">הכל</button>
           <button class="filter-btn px-3 py-1 rounded-full text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-200 transition-all whitespace-nowrap" data-filter="code" data-i18n="filterCode">פיתוח וקוד</button>
@@ -166,78 +166,78 @@
           <div class="md:w-3/4 space-y-2">
             <div class="flex items-center gap-2">
               <h3 class="text-base sm:text-lg font-medium text-zinc-900 dark:text-zinc-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-center gap-1.5" data-i18n="p1Title">
-                אסטרטגיה שיווקית למרכז הספורט[cite: 1]
+                אסטרטגיה שיווקית למרכז הספורט
               </h3>
               <span class="text-[10px] px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-500 font-en">Strategy</span>
             </div>
             <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-light" data-i18n="p1Desc">
-              בניית תוכנית תקשורת שיווקית אסטרטגית רב-ערוצית למרכז הספורט באוניברסיטת חיפה, כולל מחקר קהלים, מיתוג וחיבור בין כושר להצלחה אקדמית[cite: 1].
+              בניית תוכנית תקשורת שיווקית אסטרטגית רב-ערוצית למרכז הספורט באוניברסיטת חיפה, כולל מחקר קהלים, מיתוג וחיבור בין כושר להצלחה אקדמית.
             </p>
             <div class="flex items-center gap-2 pt-1 text-[11px] sm:text-xs text-zinc-400 font-en">
               <span>Brand Narrative</span> • <span>Multi-channel</span> • <span>Influencers</span>
             </div>
           </div>
-          <div class="text-[11px] sm:text-xs text-zinc-400 font-en shrink-0">11/2024 – 04/2025[cite: 1]</div>
+          <div class="text-[11px] sm:text-xs text-zinc-400 font-en shrink-0">11/2024 – 04/2025</div>
         </article>
 
         <article class="project-item py-5 sm:py-6 group flex flex-col md:flex-row md:items-baseline justify-between gap-3 sm:gap-4 transition-all" data-category="code">
           <div class="md:w-3/4 space-y-2">
             <div class="flex items-center gap-2">
               <h3 class="text-base sm:text-lg font-medium text-zinc-900 dark:text-zinc-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-center gap-1.5" data-i18n="p2Title">
-                ChikChak — Resume Builder[cite: 1]
+                ChikChak — Resume Builder
               </h3>
               <span class="text-[10px] px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-500 font-en">React App</span>
             </div>
             <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-light" data-i18n="p2Desc">
-              אפליקציית ווב שנבנתה מאפס בשבוע ימים, המאפשרת יצירת קורות חיים מותאמים להייטק במהירות וללא בזבוז זמן[cite: 1].
+              אפליקציית ווב שנבנתה מאפס בשבוע ימים, המאפשרת יצירת קורות חיים מותאמים להייטק במהירות וללא בזבוז זמן.
             </p>
             <div class="flex items-center gap-2 pt-1 text-[11px] sm:text-xs text-zinc-400 font-en">
               <span>ReactJS</span> • <span>UI/UX</span> • <span>AppleSeeds Project</span>
             </div>
           </div>
-          <div class="text-[11px] sm:text-xs text-zinc-400 font-en shrink-0">05/2022[cite: 1]</div>
+          <div class="text-[11px] sm:text-xs text-zinc-400 font-en shrink-0">05/2022</div>
         </article>
 
         <article class="project-item py-5 sm:py-6 group flex flex-col md:flex-row md:items-baseline justify-between gap-3 sm:gap-4 transition-all" data-category="code">
           <div class="md:w-3/4 space-y-2">
             <div class="flex items-center gap-2">
               <h3 class="text-base sm:text-lg font-medium text-zinc-900 dark:text-zinc-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-center gap-1.5" data-i18n="p3Title">
-                משחק זיכרון אינטראקטיבי (האקתון)[cite: 1]
+                משחק זיכרון אינטראקטיבי (האקתון)
               </h3>
               <span class="text-[10px] px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-500 font-en">Frontend</span>
             </div>
             <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-light" data-i18n="p3Desc">
-              פיתוח משחק בצוות במסגרת האקתון, עם מיקוד מיוחד בחוויית משתמש חלקה, ממשק נקי ותנועה זורמת[cite: 1].
+              פיתוח משחק בצוות במסגרת האקתון, עם מיקוד מיוחד בחוויית משתמש חלקה, ממשק נקי ותנועה זורמת.
             </p>
             <div class="flex items-center gap-2 pt-1 text-[11px] sm:text-xs text-zinc-400 font-en">
               <span>JavaScript</span> • <span>UI Design</span> • <span>Team Hackathon</span>
             </div>
           </div>
-          <div class="text-[11px] sm:text-xs text-zinc-400 font-en shrink-0">05/2022[cite: 1]</div>
+          <div class="text-[11px] sm:text-xs text-zinc-400 font-en shrink-0">05/2022</div>
         </article>
 
         <article class="project-item py-5 sm:py-6 group flex flex-col md:flex-row md:items-baseline justify-between gap-3 sm:gap-4 transition-all" data-category="code">
           <div class="md:w-3/4 space-y-2">
             <div class="flex items-center gap-2">
               <h3 class="text-base sm:text-lg font-medium text-zinc-900 dark:text-zinc-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-center gap-1.5" data-i18n="p4Title">
-                אתרי לקוחות מותאמים אישית[cite: 1]
+                אתרי לקוחות מותאמים אישית
               </h3>
               <span class="text-[10px] px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-500 font-en">Freelance</span>
             </div>
             <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-light" data-i18n="p4Desc">
-              אפיון ובניית אתרים רספונסיביים ומהירים ללקוחות מקומיים עם חוויית גלישה מודרנית[cite: 1].
+              אפיון ובניית אתרים רספונסיביים ומהירים ללקוחות מקומיים עם חוויית גלישה מודרנית.
             </p>
             <div class="flex items-center gap-2 pt-1 text-[11px] sm:text-xs text-zinc-400 font-en">
               <span>WordPress</span> • <span>HTML/CSS/JS</span> • <span>Responsive</span>
             </div>
           </div>
-          <div class="text-[11px] sm:text-xs text-zinc-400 font-en shrink-0">2022 – 2024[cite: 1]</div>
+          <div class="text-[11px] sm:text-xs text-zinc-400 font-en shrink-0">2022 – 2024</div>
         </article>
 
       </div>
     </section>
 
-    <!-- قسم الخبرات (Experience) -->
+    <!-- ניסיון והשכלה (Experience) -->
     <section id="experience" class="space-y-6">
       <div class="border-b subtle-border pb-3">
         <h2 class="text-xs uppercase tracking-widest text-zinc-400 font-semibold" data-i18n="sectionExpTitle">ניסיון מקצועי והשכלה</h2>
@@ -246,42 +246,42 @@
       <div class="space-y-6 sm:space-y-8">
         
         <div class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6 group">
-          <span class="text-[11px] sm:text-xs text-zinc-400 font-en sm:w-36 shrink-0">06/2025 – 08/2026[cite: 1]</span>
+          <span class="text-[11px] sm:text-xs text-zinc-400 font-en sm:w-36 shrink-0">06/2025 – 08/2026</span>
           <div class="space-y-1">
-            <h3 class="text-sm font-semibold text-zinc-900 dark:text-zinc-100" data-i18n="exp1Role">מפתח וורדפרס (Wordpress Developer)[cite: 1]</h3>
-            <p class="text-xs text-zinc-500" data-i18n="exp1Org">המרכז היהודי-ערבי, אוניברסיטת חיפה[cite: 1]</p>
+            <h3 class="text-sm font-semibold text-zinc-900 dark:text-zinc-100" data-i18n="exp1Role">מפתח וורדפרס (Wordpress Developer)</h3>
+            <p class="text-xs text-zinc-500" data-i18n="exp1Org">המרכז היהודי-ערבי, אוניברסיטת חיפה</p>
             <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 pt-0.5 font-light leading-relaxed" data-i18n="exp1Desc">
-              ניהול תוכן שוטף, ביצוע שדרוגים והבטחת אתרים פעילים, מאובטחים ותקינים ברמה גבוהה[cite: 1].
+              ניהול תוכן שוטף, ביצוע שדרוגים והבטחת אתרים פעילים, מאובטחים ותקינים ברמה גבוהה.
             </p>
           </div>
         </div>
 
         <div class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6 group">
-          <span class="text-[11px] sm:text-xs text-zinc-400 font-en sm:w-36 shrink-0">2022 – 2024[cite: 1]</span>
+          <span class="text-[11px] sm:text-xs text-zinc-400 font-en sm:w-36 shrink-0">2022 – 2024</span>
           <div class="space-y-1">
-            <h3 class="text-sm font-semibold text-zinc-900 dark:text-zinc-100" data-i18n="exp2Role">מפתח פרונטאנד עצמאי (Freelance Frontend)[cite: 1]</h3>
-            <p class="text-xs text-zinc-500" data-i18n="exp2Org">עבודה עם לקוחות ועסקים מקומיים[cite: 1]</p>
+            <h3 class="text-sm font-semibold text-zinc-900 dark:text-zinc-100" data-i18n="exp2Role">מפתח פרונטאנד עצמאי (Freelance Frontend)</h3>
+            <p class="text-xs text-zinc-500" data-i18n="exp2Org">עבודה עם לקוחות ועסקים מקומיים</p>
             <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 pt-0.5 font-light leading-relaxed" data-i18n="exp2Desc">
-              יצירת אתרים מותאמים אישית תוך שימת דגש על עיצוב נקי וביצועים מהירים[cite: 1].
+              יצירת אתרים מותאמים אישית תוך שימת דגש על עיצוב נקי וביצועים מהירים.
             </p>
           </div>
         </div>
 
         <div class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6 group">
-          <span class="text-[11px] sm:text-xs text-zinc-400 font-en sm:w-36 shrink-0">01/2024 – הווה[cite: 1]</span>
+          <span class="text-[11px] sm:text-xs text-zinc-400 font-en sm:w-36 shrink-0">01/2024 – הווה</span>
           <div class="space-y-1">
-            <h3 class="text-sm font-semibold text-zinc-900 dark:text-zinc-100" data-i18n="exp3Role">תואר ראשון בתקשורת (B.A)[cite: 1]</h3>
-            <p class="text-xs text-zinc-500" data-i18n="exp3Org">אוניברסיטת חיפה[cite: 1]</p>
+            <h3 class="text-sm font-semibold text-zinc-900 dark:text-zinc-100" data-i18n="exp3Role">תואר ראשון בתקשורת (B.A)</h3>
+            <p class="text-xs text-zinc-500" data-i18n="exp3Org">אוניברסיטת חיפה</p>
           </div>
         </div>
 
         <div class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6 group">
-          <span class="text-[11px] sm:text-xs text-zinc-400 font-en sm:w-36 shrink-0">03/2022 – 09/2022[cite: 1]</span>
+          <span class="text-[11px] sm:text-xs text-zinc-400 font-en sm:w-36 shrink-0">03/2022 – 09/2022</span>
           <div class="space-y-1">
-            <h3 class="text-sm font-semibold text-zinc-900 dark:text-zinc-100" data-i18n="exp4Role">Full-Stack Bootcamp (720 שעות)[cite: 1]</h3>
-            <p class="text-xs text-zinc-500" data-i18n="exp4Org">Appleseeds Academy[cite: 1]</p>
+            <h3 class="text-sm font-semibold text-zinc-900 dark:text-zinc-100" data-i18n="exp4Role">Full-Stack Bootcamp (720 שעות)</h3>
+            <p class="text-xs text-zinc-500" data-i18n="exp4Org">Appleseeds Academy</p>
             <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 pt-0.5 font-light leading-relaxed" data-i18n="exp4Desc">
-              הכשרה אינטנסיבית המעודדת למידה עצמאית: JavaScript, React.js, Node.js, HTML, CSS, SCSS, MongoDB, Git, ו-RESTful APIs[cite: 1].
+              הכשרה אינטנסיבית המעודדת למידה עצמאית: JavaScript, React.js, Node.js, HTML, CSS, SCSS, MongoDB, Git, ו-RESTful APIs.
             </p>
           </div>
         </div>
@@ -289,7 +289,7 @@
       </div>
     </section>
 
-    <!-- قسم المهارات (Skills) -->
+    <!-- כישורים (Skills) -->
     <section id="skills" class="space-y-6">
       <div class="border-b subtle-border pb-3">
         <h2 class="text-xs uppercase tracking-widest text-zinc-400 font-semibold" data-i18n="sectionSkillsTitle">כישורים וארגז כלים</h2>
@@ -324,13 +324,13 @@
       </div>
 
       <div class="pt-4 border-t subtle-border flex flex-wrap gap-4 sm:gap-6 text-xs text-zinc-500">
-        <div><span data-i18n="langAr">ערבית:</span> <span class="text-zinc-800 dark:text-zinc-200 font-medium" data-i18n="langArLevel">שפת אם (Native)[cite: 1]</span></div>
-        <div><span data-i18n="langHe">עברית:</span> <span class="text-zinc-800 dark:text-zinc-200 font-medium" data-i18n="langHeLevel">רמה מתקדמת (Advanced)[cite: 1]</span></div>
-        <div><span data-i18n="langEn">אנגלית:</span> <span class="text-zinc-800 dark:text-zinc-200 font-medium" data-i18n="langEnLevel">רמה בינונית (Intermediate)[cite: 1]</span></div>
+        <div><span data-i18n="langAr">ערבית:</span> <span class="text-zinc-800 dark:text-zinc-200 font-medium" data-i18n="langArLevel">שפת אם (Native)</span></div>
+        <div><span data-i18n="langHe">עברית:</span> <span class="text-zinc-800 dark:text-zinc-200 font-medium" data-i18n="langHeLevel">רמה מתקדמת (Advanced)</span></div>
+        <div><span data-i18n="langEn">אנגלית:</span> <span class="text-zinc-800 dark:text-zinc-200 font-medium" data-i18n="langEnLevel">רמה בינונית (Intermediate)</span></div>
       </div>
     </section>
 
-    <!-- الفوتر (Footer) -->
+    <!-- פוטר (Footer) -->
     <footer class="pt-8 border-t subtle-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-400 font-light text-center sm:text-start">
       <p>© 2026 Abed Khalaf. <span data-i18n="footerTagline">מעוצב בפשטות ודיוק.</span></p>
       
